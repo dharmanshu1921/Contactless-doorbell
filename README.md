@@ -1,4 +1,5 @@
 # Contactless-doorbell
+![WhatsApp Image 2022-05-18 at 7 45 29 PM](https://user-images.githubusercontent.com/100850063/169692913-20f0ffbb-5755-4660-a41b-cb6fd796028f.jpeg)
 
 Our project is based on creating a touchless doorbell,    which in the time of the  covid pandemic is very necessary, it utilizes the Arduino UNO,Relay module  and many more components to be assembled.
 Whenever a person arrives at our home, so instead of pressing the bell, the person can raise hand at around 10cm so that the ultrasonic sensor can sense the presence of a person and speaker will ring automatically without any touch to the bell.
