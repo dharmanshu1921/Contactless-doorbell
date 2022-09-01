@@ -9,10 +9,10 @@ int pos=120;
 const int trigPin = 13;  
 const int echoPin = 12;  
 
-const int relay = 10; 
+const int relay = 11; 
 
 long duration;
-int distance;
+long distance;
 int safetyDistance;
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
@@ -34,6 +34,39 @@ void loop() {
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
 
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  duration = pulseIn(echoPin, HIGH);
+
+  distance = duration * 0.034 / 2;
+
+  safetyDistance = distance;
+  if (safetyDistance <= 10) {
+    digitalWrite(relay, HIGH);
+    
+    servo1.write(150);
+    
+    lcd.clear();
+    lcd.setCursor(4,0);
+    lcd.print("WELCOME!!");
+    lcd.setCursor(4,1);
+    lcd.print("Be safe(^^)");
+    
+    
+    delay(5400);
+    servo1.write(0);
+  }
+  else {
+    digitalWrite(relay, LOW);
+    lcd.clear();
+    lcd.setCursor(255,0);
+    lcd.print("PLACE HAND HERE");
+    lcd.setCursor(6,1);
+    lcd.print("!!!!");
+  }
+}
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(15);
   digitalWrite(trigPin, LOW);
